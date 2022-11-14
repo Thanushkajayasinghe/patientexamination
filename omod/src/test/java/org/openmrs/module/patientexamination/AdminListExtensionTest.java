@@ -40,8 +40,7 @@ public class AdminListExtensionTest {
 	 */
 	@Test
 	public void testMediaTypeIsHtml() {
-		AdminList ext = new AdminList();
-		
+		AdminList ext = new AdminList();		
 		assertThat(ext.getMediaType(), is(Extension.MEDIA_TYPE.html));
 	}
 	

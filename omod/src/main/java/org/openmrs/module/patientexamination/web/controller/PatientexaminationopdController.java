@@ -9,13 +9,10 @@
  */
 package org.openmrs.module.patientexamination.web.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmrs.User;
 import org.openmrs.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,8 +26,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * 'module/patientexamination/patientexaminationLink.form'.
  */
 @Controller
-@RequestMapping(value = "module/patientexamination/patientexamination.form")
-public class PatientexaminationController {
+@RequestMapping(value = "module/patientexamination/patientexaminationopd.form")
+public class PatientexaminationopdController {
 	
 	/** Logger for this class and subclasses */
 	protected final Log log = LogFactory.getLog(getClass());
@@ -39,7 +36,7 @@ public class PatientexaminationController {
 	UserService userService;
 	
 	/** Success form view name */
-	private final String VIEW = "/module/patientexamination/patientexamination";
+	private final String VIEW = "/module/patientexamination/patientexaminationopd";
 	
 	/**
 	 * Initially called after the getUsers method to get the landing form name
