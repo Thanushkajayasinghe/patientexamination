@@ -10,11 +10,10 @@
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="/openmrs/ms/uiframework/resource/appui/styles/header.css?cache=1625626794012"
         type="text/css" />
-    <link rel="stylesheet"
-        href="/openmrs/ms/uiframework/resource/referenceapplication/styles/referenceapplication.css?cache=1625626794012"
-        type="text/css" />
-    <link rel="stylesheet" type="text/css" media="all"
-        href="https://code.jquery.com/ui/1.12.1/themes/blitzer/jquery-ui.css" type="text/css" />
+    <link rel="stylesheet" type="text/css"
+        href="/openmrs/ms/uiframework/resource/referenceapplication/styles/referenceapplication.css?cache=1625626794012" />
+    <link rel="stylesheet" type="text/css" media="all" type="text/css"
+        href="https://code.jquery.com/ui/1.12.1/themes/blitzer/jquery-ui.css" />
 
     <style>
         body {
@@ -156,6 +155,7 @@
 
                         </div>
                     </div>
+
                 </div>
 
             </div>
@@ -173,7 +173,66 @@
     integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"></script>
 <script
     src="https://raw.githubusercontent.com/Thanushkajayasinghe/patientexamination/master/patientexaminationopd.js"></script>
-<!-- <openmrs:htmlInclude file="moduleResources/patientexamination/js/patientexaminationopd.js"/> -->
+<openmrs:htmlInclude file="…/…/moduleResources/patientexamination/js/patientexaminationopd.js" />
+<script>
+    // search only, if the regexp matches
+    var HistoryArr = [
+        "Allergies", "Colds and Flu", "Conjunctivitis", "Diarrhea", "Headaches", "Mononucleosis",
+        "Stomach Aches", "Abdominal aortic aneurysm", "Acute cholecystitis", "Acute lymphoblastic leukaemia", "Benign prostate enlargement", "Bacterial vaginosis",
+        "Cellulitis", "Chest pain"
+    ];
+
+
+    $("#txtAreaHistory").autocomplete({
+        position: {
+            my: "right top",
+            at: "right bottom"
+        },
+        source: function (request, response) {
+            var str = _leftMatch(request.term, $("#txtAreaHistory")[0]);
+            str = (str != null) ? str[0] : "";
+            response($.ui.autocomplete.filter(
+                HistoryArr, str));
+        },
+        //minLength: 2,  // does have no effect, regexpression is used instead
+        focus: function () {
+            // prevent value inserted on focus
+            return false;
+        },
+        // Insert the match inside the ui element at the current position by replacing the matching substring
+        select: function (event, ui) {          
+            var m = _leftMatch(this.value, this)[0];
+            var beg = this.value.substring(0, this.selectionStart - m.length);
+            this.value = beg + ui.item.value + this.value.substring(this.selectionStart, this.value.length);
+            var pos = beg.length + ui.item.value.length;
+            _setCursorPosition(this, pos);
+            return false;
+        },
+        search: function (event, ui) {
+            var m = _leftMatch(this.value, this);
+            return (m != null)
+        }
+    });
+
+
+    // Defines for the example the match to take which is any word (with Umlauts!!).
+    function _leftMatch(string, area) {
+        return string.substring(0, area.selectionStart).match(/[\wäöüÄÖÜß]+$/)
+    }
+
+    // Set cursor position
+    function _setCursorPosition(area, pos) {
+        if (area.setSelectionRange) {
+            area.setSelectionRange(pos, pos);
+        } else if (area.createTextRange) {
+            var range = area.createTextRange();
+            range.collapse(true);
+            range.moveEnd('character', pos);
+            range.moveStart('character', pos);
+            range.select();
+        }
+    }
+</script>
 
 
 

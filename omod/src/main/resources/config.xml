@@ -9,7 +9,7 @@
 	<package>org.openmrs.module.patientexamination</package>
 	<author>Thanushka</author>
 	<description>
-			${project.parent.description}
+			Patient Examination OPD Module
 	</description>
 
 	<activator>org.openmrs.module.patientexamination.PatientexaminationActivator</activator>
