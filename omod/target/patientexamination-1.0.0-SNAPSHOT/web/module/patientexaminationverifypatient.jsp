@@ -432,6 +432,13 @@
                                     <span class="fa fa-check"></span>&nbsp;&nbsp;Verify
                                 </a>
                             </div>
+                            <div class="col-md-5">
+                                <a href="/openmrs/module/patientexamination/patientexamination.form" type="button"
+                                    class="btn-block btn-danger btn-lg btn3d" id="btnVerifyPatient"
+                                    style="padding: 20px;font-size: 1.5rem;text-align: center;font-weight: 700;color: white; text-decoration: none; ">
+                                    <span class="fa fa-check"></span>&nbsp;&nbsp;Cancel
+                                </a>
+                            </div>
                         </div>
                     </div>
 

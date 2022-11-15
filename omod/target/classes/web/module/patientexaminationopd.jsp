@@ -21,6 +21,10 @@
             background: #eee !important;
         }
 
+        .table td, .table th{
+            padding: 2px !important;
+        }
+
         .service-box {
             margin-bottom: 30px;
             padding: 15px;
@@ -70,7 +74,7 @@
 
                 <div class="row">
 
-                    <div class="col-lg-12 form-group">
+                    <div class="col-md-12 form-group">
                         <h2 style="font-size: 1.3em; color: #009384;">Patient Examination - OPD</h2>
                     </div>
 
@@ -153,6 +157,53 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-12 form-group">
+                                <div class="service-box " style="width: 100%;">
+                                    <div class="row">
+                                        <div class="col-md-2 form-group">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/1581/1581820.png"
+                                                style="width: 40px;">
+                                            <h4 style="color: #7b15a7;">Allergies</h4>
+                                        </div>
+                                        <div class="col-md-10 form-group">
+                                            <div class="row">
+                                                <div class="col-md-6" style="text-align: left;">
+                                                    <label for="txtPresentingComplains"
+                                                        style="text-align: left;">Presenting Complains</label>
+                                                    <textarea id="txtPresentingComplains"
+                                                        class="form-control"></textarea>
+                                                </div>
+                                                <div class="col-md-5" style="text-align: left;">
+                                                    <label for="txtSymptomsAllergies">Symptoms</label>
+                                                    <input id="txtSymptomsAllergies" type="text" class="form-control">
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="row" style="justify-content: center;height: 100px;align-items: center;">
+                                                        <button id="btnRowAddAllergies" type="button"
+                                                            class="btn btn-primary btn-sm"
+                                                            style="background: #0069d9;"><span
+                                                                class="fa fa-plus"></span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <table class="table table-bordered table-condensed table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Presenting Complains</th>
+                                                        <th>Symptoms</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbodyAllergies">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -171,65 +222,10 @@
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"
     integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"></script>
-<openmrs:htmlInclude file="…/…/moduleResources/patientexamination/js/patientexaminationopd.js" />
+<script src="/moduleResources/patientexamination/js/patientexaminationopd.js"></script>
+
 <script>
-    // search only, if the regexp matches
-    var HistoryArr = [
-        "Allergies", "Colds and Flu", "Conjunctivitis", "Diarrhea", "Headaches", "Mononucleosis",
-        "Stomach Aches", "Abdominal aortic aneurysm", "Acute cholecystitis", "Acute lymphoblastic leukaemia", "Benign prostate enlargement", "Bacterial vaginosis",
-        "Cellulitis", "Chest pain"
-    ];
 
-
-    $("#txtAreaHistory").autocomplete({
-        position: {
-            my: "right top",
-            at: "right bottom"
-        },
-        source: function (request, response) {
-            var str = _leftMatch(request.term, $("#txtAreaHistory")[0]);
-            str = (str != null) ? str[0] : "";
-            response($.ui.autocomplete.filter(
-                HistoryArr, str));
-        },
-        //minLength: 2,  // does have no effect, regexpression is used instead
-        focus: function () {
-            // prevent value inserted on focus
-            return false;
-        },
-        // Insert the match inside the ui element at the current position by replacing the matching substring
-        select: function (event, ui) {          
-            var m = _leftMatch(this.value, this)[0];
-            var beg = this.value.substring(0, this.selectionStart - m.length);
-            this.value = beg + ui.item.value + this.value.substring(this.selectionStart, this.value.length);
-            var pos = beg.length + ui.item.value.length;
-            _setCursorPosition(this, pos);
-            return false;
-        },
-        search: function (event, ui) {
-            var m = _leftMatch(this.value, this);
-            return (m != null)
-        }
-    });
-
-
-    // Defines for the example the match to take which is any word (with Umlauts!!).
-    function _leftMatch(string, area) {
-        return string.substring(0, area.selectionStart).match(/[\wäöüÄÖÜß]+$/)
-    }
-
-    // Set cursor position
-    function _setCursorPosition(area, pos) {
-        if (area.setSelectionRange) {
-            area.setSelectionRange(pos, pos);
-        } else if (area.createTextRange) {
-            var range = area.createTextRange();
-            range.collapse(true);
-            range.moveEnd('character', pos);
-            range.moveStart('character', pos);
-            range.select();
-        }
-    }
 </script>
 
 
