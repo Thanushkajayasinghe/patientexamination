@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
- 
+
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
-                  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
- 
-    <!--
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+	<!--
     	See http://wiki.openmrs.org/display/docs/Module+liquibase+File for 
     	documentation on this file.
     
         See http://www.liquibase.org/manual/home#available_database_refactorings
         for a list of supported elements and attributes
     -->
- 
- 	<!-- Uncomment the changeset below if you want to make the Item class persistable, see also Item and PatientexaminationDaoTest -->
- 	<!--
-	<changeSet id="patientexamination-2016-08-02-12-21" author="raff">
+
+	<!-- Uncomment the changeset below if you want to make the Item class persistable, see also Item and PatientexaminationDaoTest -->
+
+	<!-- <changeSet id="patientexamination-2016-08-02-12-21" author="raff">
 		<preConditions onFail="MARK_RAN">
 			<not><tableExists tableName="patientexamination_item"/></not>
 		</preConditions>
@@ -35,5 +34,53 @@
         <addForeignKeyConstraint constraintName="patientexamination_item_owner_fk" baseTableName="patientexamination_item" baseColumnNames="owner"  referencedTableName="users"
                                  referencedColumnNames="user_id" />
     </changeSet> -->
- 
+
+	<changeSet id="disease_list_2022-11-17" author="Thanushka">
+		<comment>
+			Creating the disease_list table
+		</comment>
+		<createTable tableName="disease_list">
+			<column name="id" type="int" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>			
+			<column name="name" type="varchar(255)" />
+
+			<column name="uuid" type="char(38)">
+				<constraints nullable="false" unique="true"></constraints>
+			</column>
+			<column name="creator" type="int" />
+			<column name="date_created" type="datetime" />
+			<column name="changed_by" type="int" />
+			<column name="date_changed" type="datetime" />
+			<column name="voided" type="int" />
+			<column name="date_voided" type="datetime" />
+			<column name="voided_by" type="int" />
+			<column name="void_reason" type="varchar(255)" />
+		</createTable>
+	</changeSet>
+
+	<changeSet id="lab_test_list_2022-11-17" author="Thanushka">
+		<comment>
+			Creating the lab_test_list table
+		</comment>
+		<createTable tableName="lab_test_list">
+			<column name="id" type="int" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(255)" />
+
+			<column name="uuid" type="char(38)">
+				<constraints nullable="false" unique="true"></constraints>
+			</column>
+			<column name="creator" type="int" />
+			<column name="date_created" type="datetime" />
+			<column name="changed_by" type="int" />
+			<column name="date_changed" type="datetime" />
+			<column name="voided" type="int" />
+			<column name="date_voided" type="datetime" />
+			<column name="voided_by" type="int" />
+			<column name="void_reason" type="varchar(255)" />
+		</createTable>
+	</changeSet>
+
 </databaseChangeLog>
