@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -115,7 +116,7 @@
                             </div>
                           </div>
                           <div class="col-md-12">
-                            <textarea class="form-control" id="txtAreaHistory"></textarea>
+                            <textarea class="form-control" name="txtAreaHistory" id="txtAreaHistory"></textarea>
                           </div>
                         </div>
                       </div>
@@ -134,35 +135,39 @@
                           <h4 style="color: #7b15a7;font-size: 11px;font-weight: bold;">Allergies</h4>
                         </div>
                         <div class="col-md-10">
+                          <div class="col-md-12">
+                            <textarea id="txtAllergies" class="form-control"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 form-group">
+                <div class="row">
+                  <div id="PresentingComplainsDiv" class="col-md-12" style="margin-bottom: 8px;">
+                    <div class="service-box">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img
+                            src="https://www.clipartmax.com/png/middle/291-2918987_complaint-comments-complaint-icon.png"
+                            style="width: 20px">
+                          <h4 style="color: #7b15a7;font-size: 11px;font-weight: bold; margin-top: 4px;">Presenting
+                            Complains</h4>
+                        </div>
+                        <div class="col-md-10">
                           <div class="row">
-                            <div class="col-md-5 fg" style="text-align: left">
+                            <div class="col-md-6" style="text-align: left">
                               <textarea id="txtPresentingComplains" placeholder="Presenting Complains"
                                 class="form-control"></textarea>
                             </div>
-                            <div class="col-md-5 fg" style="text-align: left">
-                              <input id="txtSymptomsAllergies" placeholder="Symptoms" type="text" class="form-control">
-                            </div>
-                            <div class="col-md-2">
-                              <div class="row">
-                                <button id="btnRowAddAllergies" type="button" class="btn btn-primary btn-sm"
-                                  style="background: #0069d9">
-                                  <span class="fa fa-plus"></span>
-                                </button>
-                              </div>
+                            <div class="col-md-6" style="text-align: left">
+                              <textarea id="txtSymptomsAllergies" placeholder="Symptoms"
+                                class="form-control"></textarea>
                             </div>
                           </div>
-                        </div>
-                        <div class="col-md-2"></div>
-                        <div class="col-md-10 hideTableAllergies" style="display: none;">
-                          <table class="table table-bordered table-condensed table-hover table-striped">
-                            <thead>
-                              <tr>
-                                <th>Presenting Complains</th>
-                                <th>Symptoms</th>
-                              </tr>
-                            </thead>
-                            <tbody id="tbodyAllergies"></tbody>
-                          </table>
                         </div>
                       </div>
                     </div>
@@ -366,7 +371,8 @@
 
               <div class="col-md-6 form-group">
                 <div class="row">
-                  <div id="PrescribingDiv" class="col-md-12 form-group" style="margin-bottom: 8px;">
+                  <div id="PrescribingDiv" data-toggle="modal" data-target="#modalPrescribing"
+                    class="col-md-12 form-group" style="margin-bottom: 8px;">
                     <div class="service-box">
                       <div class="row">
                         <div class="col-md-2">
@@ -374,9 +380,6 @@
                           <h4 style="color: #7b15a7; font-size: 11px; font-weight: bold;">Prescribing</h4>
                         </div>
                         <div class="col-md-10">
-                          <div class="col-md-12">
-                            <textarea class="form-control" id="txtAreaPrescribing"></textarea>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -406,6 +409,96 @@
 
 
 
+            </div>
+          </div>
+
+
+          <div class="modal fade" id="modalPrescribing" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document" style="max-width: 98%;">
+              <div class="modal-content">
+                <div class="modal-header" style="padding: 0px;">
+                  <h5 class="modal-title" id="exampleModalCenterTitle" style="margin-left: 30px;margin-top: 0;">
+                    Prescribing</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    style="margin-right: 0px;">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label>Drug</label>
+                        <input class="form-control" id="txtSearchDrugList" type="text" placeholder="Search..">
+                        <ul class="list-group" id="drugList"
+                          style="max-height: 200px; overflow: auto; margin-top: 8px;">
+                          <li class="list-group-item">Aspirin</li>
+                          <li class="list-group-item">Aspirin 100mg capsules</li>
+                          <li class="list-group-item">Aspirin + Metoclopramide 100mg capsules</li>
+                          <li class="list-group-item">Amlodipine</li>
+                          <li class="list-group-item">Amlodipine 10mg tablets</li>
+                          <li class="list-group-item">Amlodipine + Valsartan 100mg capsules</li>
+                          <li class="list-group-item">Amitriptyline</li>
+                          <li class="list-group-item">Amitriptyline 10mg tablets</li>
+                          <li class="list-group-item">Amitriptyline + Ketamine 100mg capsules</li>
+                        </ul>
+                      </div>
+                      <div class="col-md-2 form-group">
+                        <label>Period</label>
+                        <ul class="list-group" id="dayList" style="max-height: 225px; overflow: auto; margin-top: 8px;">
+
+                        </ul>
+                      </div>
+                      <div class="col-md-2 form-group">
+                        <label></label>
+                        <ul class="list-group" id="periodTypeList"
+                          style="max-height: 100px; overflow: auto; margin-top: 8px;">
+                          <li class="list-group-item">Days</li>
+                          <li class="list-group-item">Weeks</li>
+                          <li class="list-group-item">Months</li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label>Frequency</label>
+                        <ul class="list-group" id="listFrequencies"
+                          style="max-height: 225px; overflow: auto; margin-top: 8px;">
+                          <li class="list-group-item" title="daily">daily</li>
+                          <li class="list-group-item" title="every other day">every other day</li>
+                          <li class="list-group-item" title="twice a day">BID/b.i.d.</li>
+                          <li class="list-group-item" title="three times a day">TID/t.id.</li>
+                          <li class="list-group-item" title="four times a day">QID/q.i.d.</li>
+                          <li class="list-group-item" title="every bedtime">QHS</li>
+                          <li class="list-group-item" title="every 4 hours">Q4h</li>
+                          <li class="list-group-item" title="every 4 to 6 hours">Q4-6h</li>
+                          <li class="list-group-item" title="every week">QWK</li>
+                        </ul>
+                      </div>
+                      <div class="col-md-1 form-group">
+                        <button id="btnAddPrescription" class="btn btn-primary" type="button"><span
+                            class="fa fa-plus"></span></button>
+                      </div>
+
+                      <div class="col-md-12 form-group showHideTablePrescribing"
+                        style="margin-top: 30px; display: none;">
+                        <table class="table table-bordered table-striped table-hover">
+                          <thead>
+                            <tr>
+                              <th>Drug</th>
+                              <th>Period</th>
+                              <th>Frequency</th>
+                              <th>Outdoor</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tbodyPrescribing">
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>                
+              </div>
             </div>
           </div>
 
@@ -483,6 +576,7 @@
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"
   integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"></script>
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
 <script src="/moduleResources/patientexamination/js/patientexaminationopd.js"></script>
 
 <script></script>

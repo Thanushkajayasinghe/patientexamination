@@ -112,3 +112,29 @@ label {
     margin-top: 22px;
 }
 
+.button,
+button,
+input[type=submit],
+input[type=button],
+input[type=submit],
+a.button {
+    background: unset;
+}
+
+.button:hover,
+button:hover,
+input[type=submit]:hover,
+input[type=button]:hover,
+input[type=submit]:hover,
+a.button:hover {
+    background: unset;
+    border-color: unset;
+}
+
+.list-group-item{
+    padding: 2px;
+}
+
+.list-group-item {   
+    font-size: 12px;
+}

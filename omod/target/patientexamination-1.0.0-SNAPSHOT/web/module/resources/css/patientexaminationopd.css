@@ -85,11 +85,56 @@ input.form-control {
     font-size: 11px !important;
 }
 
-body{
+body {
     max-width: unset !important;
     padding: 0px 5px;
 }
 
-label {    
+label {
     margin-bottom: 1px;
+}
+
+.float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #c00;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 9999;
+}
+
+.my-float {
+    margin-top: 22px;
+}
+
+.button,
+button,
+input[type=submit],
+input[type=button],
+input[type=submit],
+a.button {
+    background: unset;
+}
+
+.button:hover,
+button:hover,
+input[type=submit]:hover,
+input[type=button]:hover,
+input[type=submit]:hover,
+a.button:hover {
+    background: unset;
+    border-color: unset;
+}
+
+.list-group-item{
+    padding: 2px;
+}
+
+.list-group-item {   
+    font-size: 12px;
 }

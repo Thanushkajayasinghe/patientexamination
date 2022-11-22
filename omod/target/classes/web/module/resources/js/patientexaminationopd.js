@@ -1,3 +1,12 @@
+//Load 1 - 90 number list
+var htmlCon = "";
+for (var i = 1; i <= 90; i++) {
+  htmlCon += `<li class="list-group-item">${i}</li>`;
+
+  $('#dayList').html("");
+  $('#dayList').html(htmlCon);
+}
+
 // Defines for the example the match to take which is any word (with Umlauts!!).
 function _leftMatch(string, area) {
   return string.substring(0, area.selectionStart).match(/[\wäöüÄÖÜß]+$/);
@@ -144,7 +153,7 @@ $(".scrollBtn").click(function () {
   }, 'slow');
 });
 
-$("#btnRowAddAllergies").on("click", function () {  
+$("#btnRowAddAllergies").on("click", function () {
 
   var presentingComplains = $("#txtPresentingComplains").val();
   var symptomsAllergies = $("#txtSymptomsAllergies").val();
@@ -183,5 +192,44 @@ $("textarea").on('click', function () {
   else
     showPanel.show("slide", { direction: "right" }, 1000);
 });
+
+//Select 1 element
+$('ul li').click(function (e) {
+  e.preventDefault()
+  $that = $(this);
+  $that.parent().find('li').removeClass('active');
+  $that.addClass('active');
+});
+
+//Add row prescribing table
+$("#btnAddPrescription").on("click", function () {
+
+  var drug = $("#drugList li.active").text();
+  var period = $("#dayList li.active").text();
+  var periodType = $("#periodTypeList li.active").text();
+  var frequency = $("#listFrequencies li.active").text();
+
+  if (drug == "" && period == "" && periodType == "" && frequency == "") {
+    $('.showHideTablePrescribing').hide();
+    return;
+  } else {
+    $("#tbodyPrescribing").append(
+      `<tr><td>${drug}</td><td>${period} ${periodType}</td><td>${frequency}</td>
+      <td style="text-align: center;"><input type="checkbox" class="chkBoxPrescribeOutdoor"/></td></tr>`
+    );
+
+    $('.showHideTablePrescribing').show();
+  }
+});
+
+// On prescribing modal opening
+$("#modalPrescribing").on('shown.bs.modal', function (e) {
+  $('#drugList li:nth-child(1)').click();
+  $('#dayList li:nth-child(1)').click();
+  $('#periodTypeList li:nth-child(1)').click();
+  $('#listFrequencies li:nth-child(1)').click();
+});
+
+
 
 
