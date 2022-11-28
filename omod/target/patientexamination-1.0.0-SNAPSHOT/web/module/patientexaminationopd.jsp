@@ -429,30 +429,22 @@
                     <div class="row">
                       <div class="col-md-4 form-group">
                         <label>Drug</label>
-                        <input class="form-control" id="txtSearchDrugList" type="text" placeholder="Search..">
+                        <input class="form-control" id="txtSearchDrugList" type="text" placeholder="Search.." tabindex="0">
                         <ul class="list-group" id="drugList"
-                          style="max-height: 200px; overflow: auto; margin-top: 8px;">
-                          <li class="list-group-item">Aspirin</li>
-                          <li class="list-group-item">Aspirin 100mg capsules</li>
-                          <li class="list-group-item">Aspirin + Metoclopramide 100mg capsules</li>
-                          <li class="list-group-item">Amlodipine</li>
-                          <li class="list-group-item">Amlodipine 10mg tablets</li>
-                          <li class="list-group-item">Amlodipine + Valsartan 100mg capsules</li>
-                          <li class="list-group-item">Amitriptyline</li>
-                          <li class="list-group-item">Amitriptyline 10mg tablets</li>
-                          <li class="list-group-item">Amitriptyline + Ketamine 100mg capsules</li>
+                          style="max-height: 200px; overflow: auto; margin-top: 8px;" tabindex="1">
+                          
                         </ul>
                       </div>
                       <div class="col-md-2 form-group">
                         <label>Period</label>
-                        <ul class="list-group" id="dayList" style="max-height: 225px; overflow: auto; margin-top: 8px;">
+                        <ul class="list-group" id="dayList" style="max-height: 225px; overflow: auto; margin-top: 8px;" tabindex="2">
 
                         </ul>
                       </div>
                       <div class="col-md-2 form-group">
                         <label></label>
                         <ul class="list-group" id="periodTypeList"
-                          style="max-height: 100px; overflow: auto; margin-top: 8px;">
+                          style="max-height: 100px; overflow: auto; margin-top: 8px;" tabindex="3">
                           <li class="list-group-item">Days</li>
                           <li class="list-group-item">Weeks</li>
                           <li class="list-group-item">Months</li>
@@ -461,7 +453,7 @@
                       <div class="col-md-3 form-group">
                         <label>Frequency</label>
                         <ul class="list-group" id="listFrequencies"
-                          style="max-height: 225px; overflow: auto; margin-top: 8px;">
+                          style="max-height: 225px; overflow: auto; margin-top: 8px;"  tabindex="4">
                           <li class="list-group-item" title="daily">daily</li>
                           <li class="list-group-item" title="every other day">every other day</li>
                           <li class="list-group-item" title="twice a day">BID/b.i.d.</li>

@@ -243,6 +243,13 @@
                 </a>
             </div>
 
+            <ul class="navbar-nav ml-auto user-options">
+                <li class="nav-item" style="font-weight: bold;">
+                    <span class="icon-hospital"></span><span id="lblInstituteName"></span>
+                    <input id="txtinstituteuuid" type="text" class="form-control" style="display: none;" />
+                </li>
+            </ul>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -436,7 +443,7 @@
                                 <a href="/openmrs/module/patientexamination/patientexamination.form" type="button"
                                     class="btn-block btn-danger btn-lg btn3d" id="btnVerifyPatient"
                                     style="padding: 20px;font-size: 1.5rem;text-align: center;font-weight: 700;color: white; text-decoration: none; ">
-                                    <span class="fa fa-check"></span>&nbsp;&nbsp;Cancel
+                                    <span class="fa fa-times"></span>&nbsp;&nbsp;Cancel
                                 </a>
                             </div>
                         </div>
@@ -451,9 +458,10 @@
 
 </body>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="></script>
+<script src="/moduleResources/patientexamination/js/patientexaminationverifypatient.js"></script>
 
 
 

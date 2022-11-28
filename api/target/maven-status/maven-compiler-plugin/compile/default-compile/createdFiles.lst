@@ -2,9 +2,13 @@ org\openmrs\module\patientexamination\api\DiseasesList\DiseasesService.class
 org\openmrs\module\patientexamination\api\DiseasesList\DiseasesServiceImpl.class
 org\openmrs\module\patientexamination\api\dao\PatientexaminationDao.class
 org\openmrs\module\patientexamination\api\DiseasesList\DiseasesDao.class
+org\openmrs\module\patientexamination\api\Phn\PhnService.class
+org\openmrs\module\patientexamination\api\Phn\PhnDao.class
 org\openmrs\module\patientexamination\PatientexaminationConfig.class
 org\openmrs\module\patientexamination\api\PatientexaminationService.class
 org\openmrs\module\patientexamination\Item.class
 org\openmrs\module\patientexamination\api\impl\PatientexaminationServiceImpl.class
+org\openmrs\module\patientexamination\api\Phn\Phn.class
 org\openmrs\module\patientexamination\api\DiseasesList\Diseases.class
+org\openmrs\module\patientexamination\api\Phn\PhnServiceImpl.class
 org\openmrs\module\patientexamination\PatientexaminationActivator.class

@@ -194,7 +194,7 @@ $("textarea").on('click', function () {
 });
 
 //Select 1 element
-$('ul li').click(function (e) {
+$(document).on('click', 'ul li', function (e) {
   e.preventDefault()
   $that = $(this);
   $that.parent().find('li').removeClass('active');
@@ -224,12 +224,186 @@ $("#btnAddPrescription").on("click", function () {
 
 // On prescribing modal opening
 $("#modalPrescribing").on('shown.bs.modal', function (e) {
-  $('#drugList li:nth-child(1)').click();
-  $('#dayList li:nth-child(1)').click();
-  $('#periodTypeList li:nth-child(1)').click();
-  $('#listFrequencies li:nth-child(1)').click();
+  $("#txtSearchDrugList").focus();
+});
+
+//Load Drugs
+LoadDrugsFun();
+function LoadDrugsFun() {
+  var requestHeaders = new Headers();
+  requestHeaders.append("Authorization", "Basic YWRtaW46QWRtaW4xMjM=");
+  requestHeaders.append("Cookie", "JSESSIONID=A2AF09658C73E1ECEC5D3C8C7C249A2D");
+
+  var requestOptions = {
+    method: 'GET',
+    headers: requestHeaders,
+    redirect: 'follow'
+  };
+
+  fetch("/openmrs/ws/rest/v1/drug", requestOptions)
+    .then(response => response.json())
+    .then(data => {
+
+      var html = "";
+      for (var i = 0; i < data.results.length; i++) {
+        html += `<li class="list-group-item">${data.results[i].display}</li>`;
+      }
+
+      $('#drugList').html("");
+      $('#drugList').html(html);
+
+    }).catch(error => console.log('error', error));
+}
+
+$('#txtSearchDrugList').on('keyup', function () {
+  var textVal = $(this).val();
+  var lengthText = textVal.length;
+
+  if (lengthText > 1) {
+    var requestHeaders = new Headers();
+    requestHeaders.append("Authorization", "Basic YWRtaW46QWRtaW4xMjM=");
+    requestHeaders.append("Cookie", "JSESSIONID=A2AF09658C73E1ECEC5D3C8C7C249A2D");
+
+    var requestOptions = {
+      method: 'GET',
+      headers: requestHeaders,
+      redirect: 'follow'
+    };
+
+    fetch(`/openmrs/ws/rest/v1/drug?q=${textVal}`, requestOptions)
+      .then(response => response.json())
+      .then(data => {
+
+        var html = "";
+        $(data.results).each(function (k, v) {
+          html += `<li class="list-group-item" attr-val="${v.uuid}">${v.display}</li>`;
+        });
+
+        $('#drugList').html("").html(html);
+      })
+      .catch(error => console.log('error', error));
+  }
+
+});
+
+$("#txtSearchDrugList").keypress(function (e) {
+  if (e.which == 13) {
+    $('#drugList').focus();
+    $("#drugList li:nth-child(1)").click();
+  }
 });
 
 
+function goToByScroll(element) {
+  $(element).animate({
+    scrollTop: $(".list-group-item.active").offset().top - $(element).offset().top +
+      $(element).scrollTop(), scrollLeft: 0
+  }, 100);
+}
+
+document.querySelector('#drugList').addEventListener('keyup', function (e) {
+  e.preventDefault();
+
+  var $this = $("#drugList li.active");
+
+  if (e.keyCode == "38") {
+    // up arrow
+    e.preventDefault();
+    if (!$("#drugList li.active").is(":first-child")) {
+      $("#drugList li").removeClass("active");
+      $this.prev("li").addClass("active");
+      goToByScroll('#drugList');
+    }
+  } else if (e.keyCode == "40") {
+    // down arrow
+    e.preventDefault();
+    if (!$("#drugList li.active").is(":last-child")) {
+      $("#drugList li").removeClass("active");
+      $this.next("li").addClass("active");
+      goToByScroll('#drugList');
+    }
+  } else if (e.which == 13) {
+    e.preventDefault();
+    $('#dayList').focusout();
+    $("#dayList li:nth-child(1)").focus().click();
+  }
+});
+
+document.querySelector('#dayList').addEventListener('keyup', function (e) {
+  e.preventDefault();
+
+  var $this = $("#dayList li.active");
+
+  if (e.keyCode == "38") {
+    // up arrow
+    e.preventDefault();
+    if (!$("#dayList li.active").is(":first-child")) {
+      $("#dayList li").removeClass("active");
+      $this.prev("li").addClass("active");
+      goToByScroll('#dayList');
+    }
+  } else if (e.keyCode == "40") {
+    // down arrow
+    e.preventDefault();
+    if (!$("#dayList li.active").is(":last-child")) {
+      $("#dayList li").removeClass("active");
+      $this.next("li").addClass("active");
+      goToByScroll('#dayList');
+    }
+  } else if (e.which == 13) {
+    e.preventDefault();
+    $("#periodTypeList li:nth-child(1)").focus().click();
+  }
+});
+
+document.querySelector('#periodTypeList').addEventListener('keyup', function (e) {
+  e.preventDefault();
+
+  var $this = $("#periodTypeList li.active");
+
+  if (e.keyCode == "38") {
+    // up arrow
+    e.preventDefault();
+    if (!$("#periodTypeList li.active").is(":first-child")) {
+      $("#periodTypeList li").removeClass("active");
+      $this.prev("li").addClass("active");
+    }
+  } else if (e.keyCode == "40") {
+    // down arrow
+    e.preventDefault();
+    if (!$("#periodTypeList li.active").is(":last-child")) {
+      $("#periodTypeList li").removeClass("active");
+      $this.next("li").addClass("active");
+    }
+  } else if (e.which == 13) {
+    e.preventDefault();
+    $("#listFrequencies li:nth-child(1)").focus().click();
+  }
+});
+
+document.querySelector('#listFrequencies').addEventListener('keyup', function (e) {
+  e.preventDefault();
+
+  var $this = $("#listFrequencies li.active");
+
+  if (e.keyCode == "38") {
+    // up arrow
+    e.preventDefault();
+    if (!$("#listFrequencies li.active").is(":first-child")) {
+      $("#listFrequencies li").removeClass("active");
+      $this.prev("li").addClass("active");
+    }
+  } else if (e.keyCode == "40") {
+    // down arrow
+    e.preventDefault();
+    if (!$("#listFrequencies li.active").is(":last-child")) {
+      $("#listFrequencies li").removeClass("active");
+      $this.next("li").addClass("active");
+    }
+  } else if (e.which == 13) {
+    e.preventDefault();
+    $("#btnAddPrescription").click();
+  }
+});
 
 
