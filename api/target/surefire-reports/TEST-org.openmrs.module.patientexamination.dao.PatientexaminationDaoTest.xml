@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="org.openmrs.module.patientexamination.dao.PatientexaminationDaoTest" time="0.257" errors="0" skipped="1">
+<testsuite tests="1" failures="0" name="org.openmrs.module.patientexamination.dao.PatientexaminationDaoTest" time="0.308" errors="0" skipped="1">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\OpenJDK\jdk-8.0.262.10-hotspot\jre\bin"/>
@@ -46,7 +46,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\OpenJDK\jdk-8.0.262.10-hotspot\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean package"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -65,7 +65,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="org.openmrs.module.patientexamination.dao.PatientexaminationDaoTest" name="saveItem_shouldSaveAllPropertiesInDb" time="0.257">
+  <testcase classname="org.openmrs.module.patientexamination.dao.PatientexaminationDaoTest" name="saveItem_shouldSaveAllPropertiesInDb" time="0.308">
     <skipped message="Unignore if you want to make the Item class persistable, see also Item and liquibase.xml"/>
   </testcase>
 </testsuite>

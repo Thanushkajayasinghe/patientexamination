@@ -4,46 +4,28 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
 
-	<!--
-    	See http://wiki.openmrs.org/display/docs/Module+liquibase+File for 
-    	documentation on this file.
-    
-        See http://www.liquibase.org/manual/home#available_database_refactorings
-        for a list of supported elements and attributes
-    -->
-
 	<!-- Uncomment the changeset below if you want to make the Item class persistable, see also Item and PatientexaminationDaoTest -->
+	
+	<changeSet id="allergy_2022-12-15" author="Thanushka">
+		<comment>Add column encounter to allergy table</comment>
+		<addColumn tableName="allergy">
+			<column name="encounter_uuid" type="varchar(100)" />
+			<column name="phn" type="varchar(100)" />
+		</addColumn>
+	</changeSet>
 
-	<!-- <changeSet id="patientexamination-2016-08-02-12-21" author="raff">
-		<preConditions onFail="MARK_RAN">
-			<not><tableExists tableName="patientexamination_item"/></not>
-		</preConditions>
+	<changeSet id="tbl_labtests_2022-12-12" author="Thanushka">
 		<comment>
-			Creating the patientexamination_item table
+			Creating the Lab Tests table
 		</comment>
-		<createTable tableName="patientexamination_item">
-			<column name="patientexamination_item_id" type="int" autoIncrement="true">
-				<constraints primaryKey="true" nullable="false"/>
-			</column>
-			<column name="uuid" type="char(38)">
-				<constraints nullable="false" unique="true"></constraints>
-			</column>
-			<column name="owner" type="int" />
-			<column name="description" type="varchar(255)" />
-		</createTable>
-        <addForeignKeyConstraint constraintName="patientexamination_item_owner_fk" baseTableName="patientexamination_item" baseColumnNames="owner"  referencedTableName="users"
-                                 referencedColumnNames="user_id" />
-    </changeSet> -->
-
-	<changeSet id="disease_list_2022-11-17" author="Thanushka">
-		<comment>
-			Creating the disease_list table
-		</comment>
-		<createTable tableName="disease_list">
+		<createTable tableName="aatbl_labtests">
 			<column name="id" type="int" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
-			</column>			
-			<column name="name" type="varchar(255)" />
+			</column>
+			<column name="encounteruuid" type="varchar(100)" />
+			<column name="patientuuid" type="varchar(100)" />
+			<column name="phn" type="varchar(100)" />
+			<column name="value" type="text" />
 
 			<column name="uuid" type="char(38)">
 				<constraints nullable="false" unique="true"></constraints>
@@ -59,15 +41,45 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="lab_test_list_2022-11-17" author="Thanushka">
+	<changeSet id="tbl_radiology_2022-12-12" author="Thanushka">
 		<comment>
-			Creating the lab_test_list table
+			Creating the Radiology table
 		</comment>
-		<createTable tableName="lab_test_list">
+		<createTable tableName="aatbl_radiology">
 			<column name="id" type="int" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
-			<column name="name" type="varchar(255)" />
+			<column name="encounteruuid" type="varchar(100)" />
+			<column name="patientuuid" type="varchar(100)" />
+			<column name="phn" type="varchar(100)" />
+			<column name="value" type="text" />
+
+			<column name="uuid" type="char(38)">
+				<constraints nullable="false" unique="true"></constraints>
+			</column>
+			<column name="creator" type="int" />
+			<column name="date_created" type="datetime" />
+			<column name="changed_by" type="int" />
+			<column name="date_changed" type="datetime" />
+			<column name="voided" type="int" />
+			<column name="date_voided" type="datetime" />
+			<column name="voided_by" type="int" />
+			<column name="void_reason" type="varchar(255)" />
+		</createTable>
+	</changeSet>
+
+	<changeSet id="tbl_procedures_2022-12-12" author="Thanushka">
+		<comment>
+			Creating the Procedures table
+		</comment>
+		<createTable tableName="aatbl_procedures">
+			<column name="id" type="int" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="encounteruuid" type="varchar(100)" />
+			<column name="patientuuid" type="varchar(100)" />
+			<column name="phn" type="varchar(100)" />
+			<column name="value" type="text" />
 
 			<column name="uuid" type="char(38)">
 				<constraints nullable="false" unique="true"></constraints>

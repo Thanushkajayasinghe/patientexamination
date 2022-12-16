@@ -1,6 +1,11 @@
 D:\Openmrs Modules\patientexamination\api\src\main\java\org\openmrs\module\patientexamination\api\DiseasesList\DiseasesService.java
+D:\Openmrs Modules\patientexamination\api\src\main\java\org\openmrs\module\patientexamination\api\PatientExaminationClasses\PresentingComplains.java
+D:\Openmrs Modules\patientexamination\api\src\main\java\org\openmrs\module\patientexamination\api\PatientExaminationClasses\Patient.java
+D:\Openmrs Modules\patientexamination\api\src\main\java\org\openmrs\module\patientexamination\api\PatientExaminationClasses\Concept.java
 D:\Openmrs Modules\patientexamination\api\src\main\java\org\openmrs\module\patientexamination\api\Phn\PhnService.java
 D:\Openmrs Modules\patientexamination\api\src\main\java\org\openmrs\module\patientexamination\api\dao\PatientexaminationDao.java
+D:\Openmrs Modules\patientexamination\api\src\main\java\org\openmrs\module\patientexamination\api\PatientExaminationClasses\Allergy.java
+D:\Openmrs Modules\patientexamination\api\src\main\java\org\openmrs\module\patientexamination\api\PatientExaminationClasses\AllergyReactions.java
 D:\Openmrs Modules\patientexamination\api\src\main\java\org\openmrs\module\patientexamination\api\DiseasesList\DiseasesDao.java
 D:\Openmrs Modules\patientexamination\api\src\main\java\org\openmrs\module\patientexamination\api\Phn\PhnDao.java
 D:\Openmrs Modules\patientexamination\api\src\main\java\org\openmrs\module\patientexamination\Item.java

@@ -80,7 +80,7 @@ $('#btnCallPhn').on('click', function () {
             success: function (data) {
                
                 localStorage.setItem("dataLoaded", JSON.stringify(data));
-                window.open('/openmrs/module/patientexamination/patientexaminationverifypatient.form', '_self')
+                window.open('/openmrs/module/patientexamination/patientexaminationverifypatient.form', '_self');
             }, error: function () {
                 iziToast.error({
                     title: 'Error!',

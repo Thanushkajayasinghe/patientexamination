@@ -239,7 +239,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark navigation">
             <div class="logo">
                 <a href="../../">
-                    <img src="https://i.ibb.co/RcQqxpQ/openmrs-Logo.png" />
+                    <img src="/moduleResources/patientexamination/images/openmrs-Logo.png" />
                 </a>
             </div>
 
@@ -286,7 +286,7 @@
                                 <div class="row">
                                     <div class="col-lg-12 form-group">
                                         <label><span class="icon-hand-right"></span>&nbsp;Full Name: <span
-                                                id="txtFullName"> </span></label>
+                                                id="txtFullName"></span></label>
                                     </div>
                                     <div class="col-lg-12 form-group">
                                         <label><span class="icon-hand-right"></span>&nbsp;Gender: <span id="txtGender">
@@ -298,7 +298,7 @@
                                     </div>
                                     <div class="col-lg-12 form-group">
                                         <label><span class="icon-hand-right"></span>&nbsp;Gurdian Info: <span
-                                                id="txtGurdianInfo"> </span></label>
+                                                id="txtGurdianInfo"></span></label>
                                     </div>
                                 </div>
                             </div>
@@ -307,16 +307,16 @@
                                 <div class="row">
                                     <div class="col-lg-12 form-group">
                                         <label><span class="icon-hand-right"></span>&nbsp;Address: <span
-                                                id="txtAddress"> </span></label>
+                                                id="txtAddress"></span></label>
                                     </div>
                                     <div class="col-lg-12 form-group">
-                                        <label><span class="icon-hand-right"></span>&nbsp;Age: <span
-                                                id="txtYears"></span> <span id="txtMonths"></span> <span
+                                        <label><span class="icon-hand-right"></span>&nbsp;Age: Y:<span
+                                                id="txtYears"></span> M:<span id="txtMonths"></span> D:<span
                                                 id="txtDays"></span> </label>
                                     </div>
                                     <div class="col-lg-12 form-group">
                                         <label><span class="icon-hand-right"></span>&nbsp;Date Of Birth: <span
-                                                id="txtDateOfBirth"> </span></label>
+                                                id="txtDateOfBirth"></span></label>
                                     </div>
                                 </div>
                             </div>
@@ -327,8 +327,8 @@
                     <div class="col-md-3 form-group">
                         <div class="col-lg-12 form-group">
                             <div class="input-file">
-                                <img id="file_upload" src="https://i.ibb.co/Nx2QgxP/useremprty.png" alt="Patient image"
-                                    class="upload-img">
+                                <img id="file_upload" src="/moduleResources/patientexamination/images/useremprty.png"
+                                    alt="Patient image" class="upload-img">
                             </div>
                         </div>
                         <div class="col-lg-12 form-group row"
@@ -433,11 +433,10 @@
                     <div class="col-md-12 form-group">
                         <div class="row justify-content-center">
                             <div class="col-md-5">
-                                <a href="/openmrs/module/patientexamination/patientexaminationopd.form" type="button"
-                                    class="btn-block btn-success btn-lg btn3d" id="btnVerifyPatient"
-                                    style="padding: 20px;font-size: 1.5rem;text-align: center;font-weight: 700;color: white; text-decoration: none; ">
+                                <button type="button" class="btn-block btn-success btn-lg btn3d" id="btnVerifyPatient"
+                                    style="padding: 20px;font-size: 1.5rem;text-align: center;font-weight: 700;color: white; text-decoration: none; background: #3ba119; ">
                                     <span class="fa fa-check"></span>&nbsp;&nbsp;Verify
-                                </a>
+                                </button>
                             </div>
                             <div class="col-md-5">
                                 <a href="/openmrs/module/patientexamination/patientexamination.form" type="button"
@@ -459,8 +458,8 @@
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="></script>
+    referrerpolicy="no-referrer"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="></script>
 <script src="/moduleResources/patientexamination/js/patientexaminationverifypatient.js"></script>
 
 

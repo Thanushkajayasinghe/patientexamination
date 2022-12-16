@@ -13,6 +13,7 @@ import org.openmrs.annotation.Authorized;
 import org.openmrs.api.APIException;
 import org.openmrs.api.OpenmrsService;
 import org.openmrs.module.patientexamination.PatientexaminationConfig;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.PresentingComplains;
 import org.openmrs.module.patientexamination.Item;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,4 +46,8 @@ public interface PatientexaminationService extends OpenmrsService {
 	@Authorized(PatientexaminationConfig.MODULE_PRIVILEGE)
 	@Transactional
 	Item saveItem(Item item) throws APIException;
+	
+	@Authorized(PatientexaminationConfig.MODULE_PRIVILEGE)
+	@Transactional
+	PresentingComplains SavePresentingComplains(PresentingComplains t);
 }

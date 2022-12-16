@@ -10,31 +10,36 @@
 package org.openmrs.module.patientexamination.api.Phn;
 
 import java.util.List;
+
 import org.openmrs.annotation.Authorized;
 import org.openmrs.api.APIException;
 import org.openmrs.api.OpenmrsService;
 import org.openmrs.module.patientexamination.PatientexaminationConfig;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.Allergy;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.AllergyReactions;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.Concept;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.Patient;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.PresentingComplains;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface PhnService extends OpenmrsService {
 	
-	@Authorized()
+	@Authorized(PatientexaminationConfig.MODULE_PRIVILEGE)
 	@Transactional(readOnly = true)
 	Phn getByUuid(String val) throws APIException;
 	
-	// @Authorized(PatientexaminationConfig.MODULE_PRIVILEGE)
-	// @Transactional
-	// Phn save(Phn phn) throws APIException;
+	@Authorized(PatientexaminationConfig.MODULE_PRIVILEGE)
+	Concept GetConceptId(String uuid);
 	
-	// @Authorized(PatientexaminationConfig.MODULE_PRIVILEGE)
-	// @Transactional
-	// void purge(Phn phn) throws APIException;
+	@Authorized(PatientexaminationConfig.MODULE_PRIVILEGE)
+	@Transactional()
+	Allergy SaveAllergy(Allergy a);
 	
-	// @Authorized()
-	// @Transactional()
-	// List<Phn> getAll();
+	@Authorized(PatientexaminationConfig.MODULE_PRIVILEGE)
+	Patient GetPatientId(String uuid);
 	
-	// @Authorized()
-	// @Transactional()
-	// List<Phn> byQuery(String query, boolean includeVoided) throws APIException;
+	@Authorized(PatientexaminationConfig.MODULE_PRIVILEGE)
+	@Transactional()
+	AllergyReactions SaveAllergyReactions(AllergyReactions t);
+	
 }

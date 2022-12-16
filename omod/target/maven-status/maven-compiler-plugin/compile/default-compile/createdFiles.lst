@@ -1,7 +1,9 @@
 org\openmrs\module\patientexamination\extension\html\AdminList.class
-org\openmrs\module\patientexamination\fragment\controller\UsersFragmentController.class
-org\openmrs\module\patientexamination\web\controller\PatientexaminationController.class
 org\openmrs\module\patientexamination\web\controller\PatientexaminationverifypatientController.class
 org\openmrs\module\patientexamination\web\controller\ResourceController\phnresource.class
 org\openmrs\module\patientexamination\web\controller\PatientexaminationopdController.class
+org\openmrs\module\patientexamination\web\controller\ResourceController\AllergyResource.class
 org\openmrs\module\patientexamination\web\controller\ResourceController\patientexaminationopdresource.class
+org\openmrs\module\patientexamination\web\controller\ResourceController\AllergyReactionsResource.class
+org\openmrs\module\patientexamination\web\controller\PatientexaminationController.class
+org\openmrs\module\patientexamination\web\controller\ResourceController\ApiResources.class

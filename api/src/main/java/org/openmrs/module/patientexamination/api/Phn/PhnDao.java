@@ -12,6 +12,11 @@ package org.openmrs.module.patientexamination.api.Phn;
 import org.hibernate.criterion.Restrictions;
 import org.openmrs.api.db.hibernate.DbSession;
 import org.openmrs.api.db.hibernate.DbSessionFactory;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.Allergy;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.AllergyReactions;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.Concept;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.Patient;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.PresentingComplains;
 
 public class PhnDao {
 	
@@ -27,6 +32,29 @@ public class PhnDao {
 	
 	public Phn getByUuid(String val) {
 		return (Phn) getSession().createCriteria(Phn.class).add(Restrictions.eq("value", val)).uniqueResult();
+	}
+	
+	public PresentingComplains SavePresentingComplains(PresentingComplains t) {
+		getSession().saveOrUpdate(t);
+		return t;
+	}
+	
+	public Concept GetConceptId(String uuid) {
+		return (Concept) getSession().createCriteria(Concept.class).add(Restrictions.eq("uuid", uuid)).uniqueResult();
+	}
+	
+	public Allergy SaveAllergy(Allergy a) {
+		getSession().saveOrUpdate(a);
+		return a;
+	}
+	
+	public Patient GetPatientId(String uuid) {
+		return (Patient) getSession().createCriteria(Patient.class).add(Restrictions.eq("uuid", uuid)).uniqueResult();
+	}
+	
+	public AllergyReactions SaveAllergyReactions(AllergyReactions t) {
+		getSession().saveOrUpdate(t);
+		return t;
 	}
 	
 }

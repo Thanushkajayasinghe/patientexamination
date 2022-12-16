@@ -14,6 +14,7 @@ import org.openmrs.api.UserService;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.patientexamination.Item;
 import org.openmrs.module.patientexamination.api.PatientexaminationService;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.PresentingComplains;
 import org.openmrs.module.patientexamination.api.dao.PatientexaminationDao;
 
 public class PatientexaminationServiceImpl extends BaseOpenmrsService implements PatientexaminationService {
@@ -48,5 +49,10 @@ public class PatientexaminationServiceImpl extends BaseOpenmrsService implements
 		}
 		
 		return dao.saveItem(item);
+	}
+	
+	@Override
+	public PresentingComplains SavePresentingComplains(PresentingComplains t) {
+		return dao.SavePresentingComplains(t);
 	}
 }

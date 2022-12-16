@@ -69,10 +69,6 @@ body {
     margin-bottom: 3px;
 }
 
-.card-body {
-    padding-top: 0 !important;
-}
-
 .input-group-text {
     font-size: 10px !important;
 }
@@ -137,4 +133,154 @@ a.button:hover {
 
 .list-group-item {   
     font-size: 12px;
+}
+
+.tag{
+    border-radius: 4px;
+    margin-right:4px;
+    display: inline-block;
+}
+
+.togglePanel{
+    cursor: pointer;
+}
+
+input.form-control{
+    font-size: 12px;
+}
+
+.upload-img {
+    border-radius: 16px;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border: 3px solid #20e5bf;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.ui-widget{
+    font-size: 12px !important;
+}
+
+.button-group#threeD .button {
+    /* background: linear-gradient(135deg, #39414E, #4C5363); */
+    background: linear-gradient(135deg, #549ee7, #36f1cf);
+    border: none;
+    width: 100%;
+    height: 45px;
+    padding: 8px 10px;
+    display: inline-block;
+    margin: 0 -2px 5px -3px;
+    /* color: #F89B72; */
+    color: #000;
+    font-size: 9px !important;
+    box-shadow: 0px 2px 15px #323A45;
+    position: relative;
+    font-weight: bolder;
+    display: flex;
+  }
+
+  .button-group#threeD .button img {
+    width: 32px !important;
+    height: 30px !important;
+    ;
+  }
+
+  .button-group#threeD .button p {
+    margin-left: 5px;
+  }
+
+  .button-group#threeD .button span {
+    text-align: center;
+    margin: 20px 0 20px 0;
+    display: block;
+    color: #fff;
+    text-shadow: 0 2px 30px #323A45;
+    font-size: 32px;
+  }
+
+  .button-group#threeD .button:hover {
+    background: linear-gradient(135deg, #4C5363, #39414E);
+  }
+
+  .button-group#threeD .button.active {
+    font-size: 14px;
+    text-shadow: 0 0 10px #fff;
+    background: linear-gradient(135deg, #4C5363, #39414E);
+    color: #fff;
+    vertical-align: bottom;
+  }
+
+  .button-group#threeD .button.active span {
+    text-shadow: 0 0 10px #fff;
+    margin-top: 10px;
+    font-size: 20px;
+  }
+
+  .button-group#threeD .button.next:before {
+    content: '';
+    position: absolute;
+    z-index: 11;
+    left: -25px;
+    top: 0px;
+    line-height: 90px;
+    border-bottom: 20px solid #323A45;
+    border-left: 25px solid transparent;
+  }
+
+  .button-group#threeD .button.next:after {
+    content: '';
+    position: absolute;
+    z-index: 11;
+    left: -25px;
+    top: 20px;
+    line-height: 90px;
+    border-top: 100px solid #323A45;
+    border-left: 25px solid transparent;
+  }
+
+  .button-group#threeD .button.prev:before {
+    content: '';
+    position: absolute;
+    z-index: 11;
+    left: 100%;
+    top: 20px;
+    line-height: 90px;
+    border-top: 100px solid #323A45;
+    border-right: 25px solid transparent;
+  }
+
+  .button-group#threeD .button.prev:after {
+    content: '';
+    position: absolute;
+    z-index: 11;
+    left: 100%;
+    top: 0px;
+    line-height: 90px;
+    border-bottom: 20px solid #323A45;
+    border-right: 25px solid transparent;
+  }
+
+  @media (max-width:765px) {
+    .button-group {
+      width: 100%;
+    }
+  }
+
+  form input[type=checkbox], .form input[type=checkbox] {
+    -webkit-appearance: none;
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 5%), inset 0px -15px 10px -12px rgb(0 0 0 / 5%);
+    padding: 8px;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+}
+
+.ui-front{
+  z-index: 9999 !important;
 }

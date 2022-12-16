@@ -61,14 +61,14 @@ function loadInstituteName() {
         .catch(error => console.log('error', error));
 }
 
+//==============================================================================
 
 var dataLoaded = localStorage.getItem("dataLoaded");
 localStorage.removeItem('dataLoaded');
 
-dataLoaded = JSON.parse(dataLoaded)
-console.log(dataLoaded)
+dataLoaded = JSON.parse(dataLoaded);
 
-var patientUuid = dataLoaded.person_id.uuid
+var patientUuid = dataLoaded.person_id.uuid;
 
 loadPatientDetails(patientUuid);
 
@@ -83,17 +83,20 @@ function loadPatientDetails(patientUuid) {
 
             $('#txtFullName').text($.trim(result.person.display));
             $('#txtGender').text($.trim(result.person.gender));
-            $('#txtDateOfBirth').val($.trim(result.person.birthdate).split("T")[0]);
+            if (result.person.birthdate != null) {
+                $('#txtDateOfBirth').text($.trim(result.person.birthdate).split("T")[0]);
+            }
 
             if ($.trim(result.person.gender) == "F") {
                 $('.showFemalOnlyPanel').show();
             } else {
-                $('.showFemalOnlyPanel').hide();
+                $('.showFemalOnlyPanel').hide(); 
             }
 
             if (result.person.birthdate != null) {
                 getAge($.trim(result.person.birthdate))
             }
+
 
             $(result.person.attributes).each(function (k, v) {
                 if (v.display != null) {
@@ -105,9 +108,7 @@ function loadPatientDetails(patientUuid) {
                         $('#txtGurdianInfo').text($.trim(v.display.split("=")[1]));
                     }
 
-
-
-                    if ($('#txtDob').val() == "") {
+                    if ($('#txtDateOfBirth').text() == "") {
                         if ($.trim(v.display.split("=")[0]) == "Years") {
                             $('#txtYears').text($.trim(v.display.split("=")[1]));
                         }
@@ -119,11 +120,10 @@ function loadPatientDetails(patientUuid) {
                         }
                     }
 
-                    calculateDobFromNic($.trim(v.display.split("=")[1]));
-
-                    // if ($.trim(v.display.split("=")[0]) == "ProfileImage") {
-                    //     $('#file_upload').attr('src', returnUrl() + '/storage/documents/' + $.trim(v.display.split("=")[1]));
-                    // }
+                    if ($.trim(v.display.split("=")[0]) == "ProfileImage") {
+                        var imgName = $.trim(v.display.split("=")[1]);
+                        $('#file_upload').attr('src', `${window.location.origin}/openmrs/owa/PatientImagesUploaded/${imgName}`);
+                    }
 
 
                     //Get Patient Address
@@ -248,7 +248,6 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
-
 function getAge(dateString) {
     var now = new Date();
 
@@ -295,7 +294,12 @@ function getAge(dateString) {
         days: dateAge
     };
 
-    $('#txtYears').val(yearAge);
-    $('#txtMonths').val(monthAge);
-    $('#txtDays').val(dateAge);
+    $('#txtYears').text(yearAge);
+    $('#txtMonths').text(monthAge);
+    $('#txtDays').text(dateAge);
 }
+
+$('#btnVerifyPatient').on('click', function () {
+    localStorage.setItem("verifiedLoaded", JSON.stringify(dataLoaded));
+    window.open('/openmrs/module/patientexamination/patientexaminationopd.form', '_self')
+});

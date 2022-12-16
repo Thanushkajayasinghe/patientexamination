@@ -12,6 +12,11 @@ package org.openmrs.module.patientexamination.api.Phn;
 import org.openmrs.api.APIException;
 import org.openmrs.api.UserService;
 import org.openmrs.api.impl.BaseOpenmrsService;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.Allergy;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.AllergyReactions;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.Concept;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.Patient;
+import org.openmrs.module.patientexamination.api.PatientExaminationClasses.PresentingComplains;
 
 public class PhnServiceImpl extends BaseOpenmrsService implements PhnService {
 	
@@ -31,4 +36,25 @@ public class PhnServiceImpl extends BaseOpenmrsService implements PhnService {
 	public Phn getByUuid(String val) throws APIException {
 		return dao.getByUuid(val);
 	}
+	
+	@Override
+	public Concept GetConceptId(String uuid) {
+		return dao.GetConceptId(uuid);
+	}
+	
+	@Override
+	public Allergy SaveAllergy(Allergy a) {
+		return dao.SaveAllergy(a);
+	}
+	
+	@Override
+	public Patient GetPatientId(String uuid) {
+		return dao.GetPatientId(uuid);
+	}
+	
+	@Override
+	public AllergyReactions SaveAllergyReactions(AllergyReactions t) {
+		return dao.SaveAllergyReactions(t);
+	}
+	
 }
